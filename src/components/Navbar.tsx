@@ -1,80 +1,60 @@
 'use client';
 
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
-
-const navLinks = [
-    { name: 'Productos', href: '#products' },
-    { name: 'Nosotros', href: '#about' },
-    { name: 'Técnica', href: '#technical' },
-    { name: 'Dónde Comprar', href: '#where-to-buy' },
-    { name: 'Contacto', href: '#contact' },
-];
 
 export default function Navbar() {
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const navLinks = [
+        { name: 'Productos', href: '#products' },
+        { name: 'Inspiración', href: '#inspiration' },
+        { name: 'Nosotros', href: '#about' },
+        { name: 'Técnica', href: '#certifications' },
+        { name: 'Contacto', href: '#contact' },
+    ];
 
     return (
-        <>
-            <nav className="relative bg-white border-b border-gray-100 py-4 z-50">
-                <div className="container mx-auto px-6 max-w-7xl">
-                    <div className="flex items-center justify-between relative">
-                        {/* Logo */}
-                        <div className="text-2xl font-bold tracking-tighter text-strufaldi-charcoal flex items-center gap-2 z-20">
-                            <div className="w-8 h-8 bg-strufaldi-red text-white flex items-center justify-center text-sm font-bold">S</div>
-                            STRUFALDI
-                        </div>
+        // Contenedor principal: ancho completo, fondo blanco, sombra
+        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-20 bg-white shadow-sm">
 
-                        {/* Desktop Navigation - Centered Absolutely */}
-                        <div className="hidden md:flex items-center gap-8 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-sm font-medium text-strufaldi-charcoal hover:text-strufaldi-red transition-colors uppercase tracking-wide"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                        </div>
+            {/* Contenedor interno: centrado y ancho limitado para alineación con el resto de la web */}
+            <div className="container max-w-7xl mx-auto px-4 h-full flex items-center justify-between">
 
-                        {/* Mobile Menu Button - Z-index to ensure clickable */}
-                        <button
-                            className="md:hidden p-2 text-strufaldi-charcoal z-20 ml-auto"
-                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                        >
-                            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-                        </button>
-                    </div>
+                {/* PARTE 1: Izquierda - Logo 1 */}
+                <div className="relative h-12 w-32 md:h-14 md:w-40 flex-shrink-0">
+                    <Image
+                        src="/images/logo-izq.png"
+                        alt="Logo Izquierdo"
+                        fill
+                        className="object-contain object-left"
+                        priority
+                    />
                 </div>
-            </nav>
 
-            {/* Mobile Menu Overlay */}
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="bg-white border-b border-gray-100 md:hidden overflow-hidden absolute top-[72px] left-0 right-0 z-40 shadow-lg"
-                    >
-                        <div className="flex flex-col p-6 gap-4">
-                            {navLinks.map((link) => (
-                                <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-lg font-medium text-strufaldi-charcoal hover:text-strufaldi-red transition-colors"
-                                >
-                                    {link.name}
-                                </Link>
-                            ))}
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
-        </>
+                {/* PARTE 2: Centro - Menú de Navegación (Oculto en móviles) */}
+                <div className="hidden md:flex items-center gap-8">
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            className="text-sm font-medium text-gray-700 hover:text-black hover:underline underline-offset-4 transition-colors uppercase tracking-wide"
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
+                </div>
+
+                {/* PARTE 3: Derecha - Logo 2 */}
+                <div className="relative h-12 w-24 md:h-14 md:w-32 flex-shrink-0">
+                    <Image
+                        src="/images/logo-der.png"
+                        alt="Logo Derecho"
+                        fill
+                        className="object-contain object-right"
+                        priority
+                    />
+                </div>
+
+            </div>
+        </nav>
     );
 }

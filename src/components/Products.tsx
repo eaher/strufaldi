@@ -1,37 +1,46 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 
-const categories = [
+const formats = [
     {
         id: 1,
-        title: 'Pisos Industriales',
-        description: 'Resistencia extrema para alto tránsito.',
-        color: 'bg-stone-800',
-        height: 'h-[400px] md:h-[600px]',
+        title: '20x20 cm',
+        subtitle: 'FORMATO',
+        image: '/images/products/formato-20x20.png',
     },
     {
         id: 2,
-        title: 'Revestimientos',
-        description: 'Estética y protección para fachadas.',
-        color: 'bg-stone-700',
-        height: 'h-[400px] md:h-[600px]',
+        title: '15x15 cm',
+        subtitle: 'FORMATO',
+        image: '/images/products/formato-15x15.png',
     },
     {
         id: 3,
-        title: 'Piscinas',
-        description: 'Sistemas completos para natatorios.',
-        color: 'bg-blue-900',
-        height: 'h-[400px] md:h-[600px]',
+        title: '10x20 cm',
+        subtitle: 'FORMATO',
+        image: '/images/products/formato-10x20.png',
+    },
+    {
+        id: 4,
+        title: '10x10 cm',
+        subtitle: 'FORMATO',
+        image: '/images/products/formato-10x10.png',
+    },
+    {
+        id: 5,
+        title: '6x24 cm',
+        subtitle: 'FORMATO',
+        image: '/images/products/formato-6x24.png',
     },
 ];
 
 export default function Products() {
     return (
-        <section id="products" className="py-24 bg-white">
-            <div className="container mx-auto px-6 max-w-7xl">
-                <div className="text-center mb-16">
+        <section id="products" className="py-16 bg-white">
+            <div className="container mx-auto px-4 max-w-7xl">
+                <div className="text-center mb-12">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -40,32 +49,34 @@ export default function Products() {
                     >
                         Nuestros Productos
                     </motion.h2>
-                    <div className="w-24 h-1 bg-strufaldi-red mx-auto rounded-full"></div>
+                    <div className="w-24 h-1 bg-strufaldi-red mx-auto rounded-none"></div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {categories.map((cat, index) => (
+                <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+                    {formats.map((item, index) => (
                         <motion.div
-                            key={cat.id}
+                            key={item.id}
                             initial={{ opacity: 0, y: 30 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.1 }}
-                            className={`group relative overflow-hidden rounded-2xl ${cat.color} ${cat.height} cursor-pointer`}
+                            className="group relative overflow-hidden rounded-none h-[400px] cursor-pointer bg-gray-200"
                         >
-                            {/* Image Placeholder */}
-                            <div className="absolute inset-0 opacity-50 bg-gradient-to-t from-black/80 to-transparent group-hover:scale-105 transition-transform duration-700 ease-out"></div>
+                            {/* Image with Zoom Effect */}
+                            <Image
+                                src={item.image}
+                                alt={item.title}
+                                fill
+                                className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
+                            />
 
-                            <div className="absolute bottom-0 left-0 p-8 w-full z-10">
-                                <div className="flex justify-between items-end">
-                                    <div>
-                                        <h3 className="text-3xl font-bold text-white mb-2">{cat.title}</h3>
-                                        <p className="text-white/80 font-light">{cat.description}</p>
-                                    </div>
-                                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center text-white group-hover:bg-white group-hover:text-strufaldi-charcoal transition-all">
-                                        <ArrowUpRight size={24} />
-                                    </div>
-                                </div>
+                            {/* Gradient Overlay */}
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
+
+                            {/* Content */}
+                            <div className="absolute bottom-0 left-0 w-full p-6 text-center">
+                                <h3 className="text-2xl font-bold text-white mb-1">{item.title}</h3>
+                                <p className="text-xs uppercase tracking-widest text-gray-300 font-medium">{item.subtitle}</p>
                             </div>
                         </motion.div>
                     ))}

@@ -4,21 +4,20 @@ import Products from "@/components/Products";
 import About from "@/components/About";
 import Certifications from "@/components/Certifications";
 import Inspiration from "@/components/Inspiration";
-import WhereToBuy from "@/components/WhereToBuy";
+
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white pt-20">
       <Navbar />
       <Hero />
       <Products />
-      <About />
-      <Certifications />
       <Inspiration />
-      <WhereToBuy />
+      <About />
       <Contact />
+      <Certifications />
       <Footer />
     </main>
   );
