@@ -26,7 +26,7 @@ const formats = [
         id: 4,
         title: '10x10 cm',
         subtitle: 'FORMATO',
-        image: '/images/products/formato-10x10.png',
+        image: '/images/products/formato-10x10.jpg',
     },
     {
         id: 5,

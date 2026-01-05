@@ -17,7 +17,7 @@ export default function Hero() {
                 {/* Background Image */}
                 <div className="relative w-full h-[400px] md:h-[500px] lg:absolute lg:inset-0 lg:h-full z-0">
                     <Image
-                        src="/images/hero.webp"
+                        src="/images/hero.png"
                         alt="Piscina Strufaldi"
                         fill
                         className="object-cover -z-10"
