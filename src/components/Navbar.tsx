@@ -13,7 +13,6 @@ export default function Navbar() {
         { name: 'Productos', href: '#products' },
         { name: 'Inspiración', href: '#inspiration' },
         { name: 'Nosotros', href: '#about' },
-        { name: 'Técnica', href: '#certifications' },
         { name: 'Contacto', href: '#contact' },
     ];
 

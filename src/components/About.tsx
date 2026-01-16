@@ -15,18 +15,20 @@ export default function About() {
                             transition={{ duration: 0.8 }}
                         >
                             <h4 className="text-strufaldi-red font-bold uppercase tracking-widest mb-4">Sobre Nosotros</h4>
-                            <h2 className="text-4xl md:text-5xl font-bold text-strufaldi-charcoal mb-8 leading-tight">
-                                Tradición y <br /> Tecnología Cerámica
+
+                            <h2 className="text-4xl md:text-5xl font-bold text-strufaldi-charcoal mb-6 leading-tight">
+                                STRUFALDI
                             </h2>
-                            <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                                Desde hace décadas, Strufaldi se dedica a la producción de cerámica de alta performance. Combinamos la artesanía tradicional con tecnología de punta para crear productos que superan los estándares más exigentes del mercado.
-                            </p>
                             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Nuestra misión es ofrecer soluciones duraderas para proyectos que requieren resistencia química, mecánica y térmica, sin sacrificar la estética.
+                                Strufaldi es una empresa brasileña fundada en 1995, especializada en revestimientos cerámicos de pequeño formato, como pastillas y azulejos, conocidos por su diseño innovador, colores vibrantes y alta calidad, ideales para piscinas, fachadas e interiores, con una fuerte presencia en el mercado latinoamericano.
                             </p>
-                            <button className="text-strufaldi-charcoal font-bold border-b-2 border-strufaldi-charcoal pb-1 hover:text-strufaldi-red hover:border-strufaldi-red transition-all">
-                                Conoce nuestra historia
-                            </button>
+
+                            <h2 className="text-4xl md:text-5xl font-bold text-strufaldi-charcoal mb-6 leading-tight">
+                                CERACOR
+                            </h2>
+                            <p className="text-lg text-gray-600 leading-relaxed">
+                                Hace más de 14 años que impulsamos proyectos a través de la distribución de pisos y revestimientos de marcas europeas y latinoamericanas, combinando trayectoria, conocimiento técnico y un portfolio de productos premium de diseño.
+                            </p>
                         </motion.div>
                     </div>
 
