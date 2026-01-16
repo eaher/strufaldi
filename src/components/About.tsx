@@ -7,7 +7,7 @@ export default function About() {
         <section id="about" className="py-24 bg-strufaldi-gray overflow-hidden">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="flex flex-col lg:flex-row items-center gap-16">
-                    <div className="lg:w-1/2">
+                    <div className="lg:w-1/2 flex flex-col items-center md:items-start text-center md:text-left">
                         <motion.div
                             initial={{ opacity: 0, x: -50 }}
                             whileInView={{ opacity: 1, x: 0 }}

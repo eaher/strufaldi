@@ -6,6 +6,7 @@ import Image from 'next/image';
 
 export default function Hero() {
     const [formType, setFormType] = useState<'individual' | 'pro'>('pro');
+    const [contactMethod, setContactMethod] = useState<'whatsapp' | 'call' | 'mail'>('whatsapp');
 
     return (
         <section id="hero" className="flex flex-col relative">
@@ -54,7 +55,7 @@ export default function Hero() {
                                         : 'text-gray-500 hover:text-gray-700'
                                         }`}
                                 >
-                                    Soy Distribuidor
+                                    Quiero ser Distribuidor
                                 </button>
                                 <button
                                     type="button"
@@ -70,7 +71,7 @@ export default function Hero() {
 
                             {/* C. Form Fields - Compact Grid */}
                             <form className="space-y-3">
-                                {/* Row 1: Nombre (50%) | Apellidos (50%) */}
+                                {/* Row 1: Nombre (50%) | Apellido (50%) */}
                                 <div className="flex gap-3">
                                     <input
                                         type="text"
@@ -79,7 +80,7 @@ export default function Hero() {
                                     />
                                     <input
                                         type="text"
-                                        placeholder="Apellidos"
+                                        placeholder="Apellido"
                                         className="w-1/2 px-3 py-2 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-sm transition-all"
                                     />
                                 </div>
@@ -91,7 +92,6 @@ export default function Hero() {
                                     className="w-full px-3 py-2 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-sm transition-all"
                                 />
 
-                                {/* Row 3: Teléfono (60%) | CP (40%) */}
                                 {/* Row 3: Teléfono (Full Width) */}
                                 <input
                                     type="tel"
@@ -114,7 +114,6 @@ export default function Hero() {
                                 </div>
 
 
-
                                 {/* Row 6: Mensaje (Textarea) */}
                                 <textarea
                                     rows={3}
@@ -122,7 +121,34 @@ export default function Hero() {
                                     className="w-full px-3 py-2 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-sm transition-all resize-none"
                                 ></textarea>
 
-
+                                {/* Selector de Comunicación (Radio Buttons) */}
+                                <div className="space-y-2 pt-1">
+                                    <label className="text-xs text-gray-500 font-medium ml-1">Quiero que me contacten por:</label>
+                                    <div className="flex gap-4 px-1">
+                                        {[
+                                            { id: 'whatsapp', label: 'WhatsApp' },
+                                            { id: 'call', label: 'Llamada' },
+                                            { id: 'mail', label: 'Mail' }
+                                        ].map((option) => (
+                                            <label key={option.id} className="flex items-center gap-2 cursor-pointer group">
+                                                <div className="relative flex items-center justify-center">
+                                                    <input
+                                                        type="radio"
+                                                        name="contactMethod"
+                                                        value={option.id}
+                                                        checked={contactMethod === option.id}
+                                                        onChange={() => setContactMethod(option.id as any)}
+                                                        className="peer appearance-none w-4 h-4 border border-gray-300 rounded-full checked:border-strufaldi-red checked:border-4 transition-all cursor-pointer"
+                                                    />
+                                                </div>
+                                                <span className={`text-xs font-medium transition-colors ${contactMethod === option.id ? 'text-strufaldi-red' : 'text-gray-600 group-hover:text-gray-800'
+                                                    }`}>
+                                                    {option.label}
+                                                </span>
+                                            </label>
+                                        ))}
+                                    </div>
+                                </div>
 
                                 <button
                                     type="submit"

@@ -25,7 +25,7 @@ export default function Navbar() {
             <div className="container max-w-7xl mx-auto px-4 h-full flex items-center justify-between relative">
 
                 {/* PARTE 1: Izquierda - Logo 1 */}
-                <div className="relative h-12 w-32 md:h-14 md:w-40 flex-shrink-0">
+                <div className="relative h-8 w-24 md:h-12 md:w-36 flex-shrink-0">
                     <Image
                         src="/images/logo-izq.png"
                         alt="Logo Izquierdo"
@@ -36,12 +36,12 @@ export default function Navbar() {
                 </div>
 
                 {/* PARTE 2: Centro - Menú de Navegación (Desktop) */}
-                <div className="hidden md:flex items-center gap-8">
+                <div className="hidden md:flex absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 items-center gap-6 lg:gap-8">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
                             href={link.href}
-                            className="text-sm font-medium text-gray-700 hover:text-black hover:underline underline-offset-4 transition-colors uppercase tracking-wide"
+                            className="text-sm font-medium text-gray-700 hover:text-black hover:underline underline-offset-4 transition-colors uppercase tracking-wide whitespace-nowrap"
                         >
                             {link.name}
                         </Link>
@@ -51,9 +51,9 @@ export default function Navbar() {
                 {/* PARTE 3: Derecha - Logo 2 + Botón Móvil */}
                 <div className="flex items-center gap-4">
                     {/* Logo 2 (Visible siempre o ajustado según diseño. En el prompt dice: 'Mantener los logos... visibles') */}
-                    <div className="relative h-12 w-30 md:h-14 md:w-40 flex-shrink-0">
+                    <div className="relative h-10 w-36 md:h-20 md:w-80 flex-shrink-0">
                         <Image
-                            src="/images/logo-der.png"
+                            src="/images/logo-der-v2.png"
                             alt="Logo Derecho"
                             fill
                             className="object-contain object-right"
@@ -74,13 +74,13 @@ export default function Navbar() {
 
             {/* MENÚ MÓVIL (Overlay) */}
             {isMenuOpen && (
-                <div className="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg border-t border-gray-100 flex flex-col p-4 animate-in slide-in-from-top-2 duration-300">
-                    <ul className="flex flex-col gap-4">
+                <div className="md:hidden absolute top-20 left-0 w-full bg-white shadow-lg border-t border-gray-100 flex flex-col p-4 animate-in slide-in-from-top-2 duration-300 items-center">
+                    <ul className="flex flex-col gap-4 w-full items-center">
                         {navLinks.map((link) => (
-                            <li key={link.name}>
+                            <li key={link.name} className="w-full text-center">
                                 <Link
                                     href={link.href}
-                                    className="block text-base font-medium text-gray-800 hover:text-black hover:bg-gray-50 px-4 py-2 rounded-md transition-colors uppercase tracking-wide"
+                                    className="block text-base font-medium text-gray-800 hover:text-black hover:bg-gray-50 py-2 rounded-md transition-colors uppercase tracking-wide"
                                     onClick={() => setIsMenuOpen(false)} // Cerrar menú al hacer clic
                                 >
                                     {link.name}

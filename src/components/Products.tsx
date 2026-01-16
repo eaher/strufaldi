@@ -70,13 +70,10 @@ export default function Products() {
                                 className="object-cover group-hover:scale-110 transition-transform duration-700 ease-out"
                             />
 
-                            {/* Gradient Overlay */}
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-80 group-hover:opacity-90 transition-opacity duration-300"></div>
-
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 text-center">
-                                <h3 className="text-2xl font-bold text-white mb-1">{item.title}</h3>
-                                <p className="text-xs uppercase tracking-widest text-gray-300 font-medium">{item.subtitle}</p>
+                            <div className="absolute bottom-0 left-0 w-full p-6 text-center bg-gradient-to-t from-black/70 via-black/40 to-transparent">
+                                <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.8)]">{item.title}</h3>
+                                <p className="text-xs uppercase tracking-widest text-gray-100 font-medium drop-shadow-[0_2px_4px_rgba(0,0,0,0.7)]">{item.subtitle}</p>
                             </div>
                         </motion.div>
                     ))}

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 
 export default function Contact() {
     const [formType, setFormType] = useState<'individual' | 'pro'>('pro');
+    const [contactMethod, setContactMethod] = useState<'whatsapp' | 'call' | 'mail'>('whatsapp');
 
     return (
         <section id="contact" className="py-24 bg-white relative">
@@ -29,7 +30,7 @@ export default function Contact() {
                                 : 'text-gray-500 hover:text-gray-700'
                                 }`}
                         >
-                            Soy Distribuidor
+                            Quiero ser Distribuidor
                         </button>
                         <button
                             type="button"
@@ -52,7 +53,7 @@ export default function Contact() {
                             />
                             <input
                                 type="text"
-                                placeholder="Apellidos"
+                                placeholder="Apellido"
                                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                             />
                         </div>
@@ -87,6 +88,35 @@ export default function Contact() {
                             placeholder="Mensaje"
                             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all resize-none"
                         ></textarea>
+
+                        {/* Selector de Comunicación (Radio Buttons) */}
+                        <div className="space-y-2 pt-2">
+                            <label className="text-sm text-gray-500 font-medium ml-1">Quiero que me contacten por:</label>
+                            <div className="flex gap-6 px-1">
+                                {[
+                                    { id: 'whatsapp', label: 'WhatsApp' },
+                                    { id: 'call', label: 'Llamada' },
+                                    { id: 'mail', label: 'Mail' }
+                                ].map((option) => (
+                                    <label key={option.id} className="flex items-center gap-2 cursor-pointer group">
+                                        <div className="relative flex items-center justify-center">
+                                            <input
+                                                type="radio"
+                                                name="contactMethod"
+                                                value={option.id}
+                                                checked={contactMethod === option.id}
+                                                onChange={() => setContactMethod(option.id as any)}
+                                                className="peer appearance-none w-5 h-5 border border-gray-300 rounded-full checked:border-strufaldi-red checked:border-4 transition-all cursor-pointer"
+                                            />
+                                        </div>
+                                        <span className={`text-sm font-medium transition-colors ${contactMethod === option.id ? 'text-strufaldi-red' : 'text-gray-600 group-hover:text-gray-800'
+                                            }`}>
+                                            {option.label}
+                                        </span>
+                                    </label>
+                                ))}
+                            </div>
+                        </div>
 
                         <div className="pt-4">
                             <button
