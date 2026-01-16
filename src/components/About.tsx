@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 
 export default function About() {
@@ -16,16 +17,26 @@ export default function About() {
                         >
                             <h4 className="text-strufaldi-red font-bold uppercase tracking-widest mb-4">Sobre Nosotros</h4>
 
-                            <h2 className="text-4xl md:text-5xl font-bold text-strufaldi-charcoal mb-6 leading-tight">
-                                STRUFALDI
-                            </h2>
+                            <div className="relative h-20 w-80 mb-6">
+                                <Image
+                                    src="/images/logo-der-v2.png"
+                                    alt="Strufaldi Logo"
+                                    fill
+                                    className="object-contain object-left"
+                                />
+                            </div>
                             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                                 Strufaldi es una empresa brasileña fundada en 1995, especializada en revestimientos cerámicos de pequeño formato, como pastillas y azulejos, conocidos por su diseño innovador, colores vibrantes y alta calidad, ideales para piscinas, fachadas e interiores, con una fuerte presencia en el mercado latinoamericano.
                             </p>
 
-                            <h2 className="text-4xl md:text-5xl font-bold text-strufaldi-charcoal mb-6 leading-tight">
-                                CERACOR
-                            </h2>
+                            <div className="relative h-12 w-48 mb-6">
+                                <Image
+                                    src="/images/logo-izq.png"
+                                    alt="Ceracor Logo"
+                                    fill
+                                    className="object-contain object-left"
+                                />
+                            </div>
                             <p className="text-lg text-gray-600 leading-relaxed">
                                 Hace más de 14 años que impulsamos proyectos a través de la distribución de pisos y revestimientos de marcas europeas y latinoamericanas, combinando trayectoria, conocimiento técnico y un portfolio de productos premium de diseño.
                             </p>
