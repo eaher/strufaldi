@@ -51,12 +51,15 @@ export default function About() {
                             transition={{ duration: 0.8 }}
                             className="relative z-10"
                         >
-                            <div className="aspect-[4/3] bg-stone-300 rounded-lg shadow-2xl relative overflow-hidden">
-                                <div className="absolute inset-0 bg-neutral-200 flex items-center justify-center text-neutral-400">
-                                    Imagen Corporativa / Fábrica
-                                </div>
+                            <div className="aspect-[4/3] rounded-lg shadow-2xl relative overflow-hidden group">
+                                <Image
+                                    src="/images/corpo.png"
+                                    alt="Instalaciones Strufaldi"
+                                    fill
+                                    className="object-cover transition-transform duration-700 group-hover:scale-105"
+                                />
                                 {/* Decorative element */}
-                                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-strufaldi-red/10 rounded-full blur-3xl"></div>
+                                <div className="absolute -bottom-10 -right-10 w-40 h-40 bg-strufaldi-red/20 rounded-full blur-3xl z-20 pointer-events-none mix-blend-multiply"></div>
                             </div>
                         </motion.div>
                     </div>

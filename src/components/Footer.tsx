@@ -29,14 +29,14 @@ export default function Footer() {
                         </div>
                     </div>
 
-                    {/* Quick Links */}
-                    <div className="w-full">
-                        <h3 className="text-lg font-bold mb-6">Explorar</h3>
-                        <ul className="space-y-4 text-neutral-400 flex flex-col items-center md:items-start">
-                            <li><Link href="#products" className="py-2 block hover:text-white transition-colors">Productos</Link></li>
-                            <li><Link href="#about" className="py-2 block hover:text-white transition-colors">Nosotros</Link></li>
-                            <li><Link href="#technical" className="py-2 block hover:text-white transition-colors">Área Técnica</Link></li>
-                            <li><Link href="#projects" className="py-2 block hover:text-white transition-colors">Proyectos</Link></li>
+                    {/* Columna 2: Enlaces Rápidos */}
+                    <div>
+                        <h4 className="font-bold text-lg mb-4 text-white uppercase tracking-wider">Explorar</h4>
+                        <ul className="space-y-2">
+                            <li><a href="#products" className="text-gray-400 hover:text-white transition-colors">Productos</a></li>
+                            <li><a href="#inspiration" className="text-gray-400 hover:text-white transition-colors">Inspiración</a></li>
+                            <li><a href="#about" className="text-gray-400 hover:text-white transition-colors">Nosotros</a></li>
+                            <li><a href="#contact" className="text-gray-400 hover:text-white transition-colors">Contacto</a></li>
                         </ul>
                     </div>
 
@@ -73,7 +73,6 @@ export default function Footer() {
 
                 <div className="border-t border-neutral-800 pt-8 flex flex-col md:flex-row justify-between items-center text-neutral-500 text-sm text-center md:text-left">
                     <p>&copy; {new Date().getFullYear()} Strufaldi. Todos los derechos reservados.</p>
-                    <p className="mt-4 md:mt-0">Design by Antigravity</p>
                 </div>
             </div>
         </footer>
