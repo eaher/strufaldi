@@ -70,21 +70,7 @@ export default function Products() {
         <section id="products" className="py-16 bg-white">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center mb-12">
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        className="max-w-4xl mx-auto mb-10 text-gray-600 leading-relaxed space-y-4"
-                    >
-                        <p>
-                            Strufaldi es la marca brasileña de revestimientos cerámicos de pequeño formato que combina la artesanía tradicional con tecnología de punta para crear productos de diseño que superan los estándares más exigentes del mercado.
-                        </p>
-                        <p>
-                            Reconocida por sus piezas únicas y coloridas, ideales para piscinas, baños y paredes, ofreciendo alta calidad y durabilidad. Disponibles en diversos colores y acabados (brillante, mate, biselado) y formatos como 10x10 cm, 20x20 cm y 6x24 cm. Strufaldi ofrece soluciones creativas para espacios con personalidad.
-                        </p>
-                    </motion.div>
 
-                    <div className="w-24 h-1 bg-strufaldi-red mx-auto rounded-none mb-8"></div>
 
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
@@ -115,9 +101,9 @@ export default function Products() {
                             />
 
                             {/* Content */}
-                            <div className="absolute bottom-0 left-0 w-full p-6 text-center bg-gradient-to-t from-black/80 via-black/50 to-transparent flex flex-col items-center justify-end h-1/2 transition-opacity duration-300">
-                                <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-md">{product.title}</h3>
-                                <p className="text-xs uppercase tracking-widest text-gray-200 font-medium mb-4 drop-shadow-sm">FORMATO</p>
+                            <div className="absolute bottom-0 left-0 w-full p-6 text-center flex flex-col items-center justify-end h-1/2 transition-opacity duration-300">
+                                <h3 className="text-2xl font-bold text-white mb-1 drop-shadow-lg">{product.title}</h3>
+                                <p className="text-xs uppercase tracking-widest text-gray-200 font-medium mb-4 drop-shadow-md">FORMATO</p>
 
                                 <button
                                     onClick={() => handleOpenGallery(product.id)}
@@ -128,6 +114,23 @@ export default function Products() {
                             </div>
                         </motion.div>
                     ))}
+                </div>
+
+                <div className="mt-16 text-center">
+                    <div className="w-24 h-1 bg-strufaldi-red mx-auto rounded-none mb-8"></div>
+                    <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        className="max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4"
+                    >
+                        <p>
+                            Strufaldi es la marca brasileña de revestimientos cerámicos de pequeño formato que combina la artesanía tradicional con tecnología de punta para crear productos de diseño que superan los estándares más exigentes del mercado.
+                        </p>
+                        <p>
+                            Reconocida por sus piezas únicas y coloridas, ideales para piscinas, baños y paredes, ofreciendo alta calidad y durabilidad. Disponibles en diversos colores y acabados (brillante, mate, biselado) y formatos como 10x10 cm, 20x20 cm y 6x24 cm. Strufaldi ofrece soluciones creativas para espacios con personalidad.
+                        </p>
+                    </motion.div>
                 </div>
             </div>
 
