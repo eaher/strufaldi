@@ -19,6 +19,8 @@ body {
   overflow-x: hidden;
 }
 
+/* Global Scaling removed in favor of JS injection */
+
 /* Custom Scrollbar for premium feel */
 ::-webkit-scrollbar {
   width: 8px;

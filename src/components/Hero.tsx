@@ -13,7 +13,7 @@ export default function Hero() {
 
 
             {/* Hero Container */}
-            <div className="relative w-full bg-gray-100 lg:h-[900px] flex flex-col lg:block">
+            <div className="relative w-full bg-gray-100 min-h-[600px] lg:min-h-[650px] lg:h-[calc(100vh-80px)] flex flex-col lg:block">
 
                 {/* Background Image */}
                 <div className="relative w-full h-[400px] md:h-[500px] lg:absolute lg:inset-0 lg:h-full z-0">
@@ -34,7 +34,7 @@ export default function Hero() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.3, duration: 0.6 }}
-                        className="pointer-events-auto w-full lg:max-w-[450px] mx-auto bg-white shadow-2xl rounded-none overflow-hidden
+                        className="pointer-events-auto w-full lg:max-w-[380px] xl:max-w-[450px] mx-auto bg-white shadow-2xl rounded-none overflow-hidden
                          lg:absolute lg:right-[20px] lg:top-0 my-0 lg:my-0 lg:mx-0"
                     >
                         {/* A. Card Header - Red Strip */}

@@ -18,13 +18,13 @@ export default function Navbar() {
 
     return (
         // Contenedor principal: ancho completo, fondo blanco, sombra
-        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-20 bg-white shadow-sm">
+        <nav className="fixed top-0 left-0 right-0 z-50 w-full h-16 lg:h-20 bg-white shadow-sm">
 
             {/* Contenedor interno: centrado y ancho limitado para alineación con el resto de la web */}
             <div className="container max-w-7xl mx-auto px-4 h-full flex items-center justify-between relative">
 
                 {/* PARTE 1: Izquierda - Logo 1 */}
-                <div className="relative h-8 w-24 md:h-12 md:w-36 flex-shrink-0">
+                <div className="relative h-8 w-24 md:h-10 md:w-28 lg:h-12 lg:w-36 flex-shrink-0">
                     <Image
                         src="/images/logo-izq.png"
                         alt="Logo Izquierdo"
@@ -50,7 +50,7 @@ export default function Navbar() {
                 {/* PARTE 3: Derecha - Logo 2 + Botón Móvil */}
                 <div className="flex items-center gap-4">
                     {/* Logo 2 (Visible siempre o ajustado según diseño. En el prompt dice: 'Mantener los logos... visibles') */}
-                    <div className="relative h-10 w-36 md:h-20 md:w-80 flex-shrink-0">
+                    <div className="relative h-10 w-36 md:h-16 md:w-64 lg:h-20 lg:w-80 flex-shrink-0">
                         <Image
                             src="/images/logo-der-v2.png"
                             alt="Logo Derecho"
