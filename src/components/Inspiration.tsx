@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -113,21 +113,43 @@ export default function Inspiration() {
         document.body.style.overflow = 'unset'; // Usage restored
     };
 
-    const nextImage = (e: React.MouseEvent) => {
-        e.stopPropagation();
+    const nextImage = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
         if (!selectedCategory) return;
         setCurrentImageIndex((prev) =>
             prev === selectedCategory.images.length - 1 ? 0 : prev + 1
         );
     };
 
-    const prevImage = (e: React.MouseEvent) => {
-        e.stopPropagation();
+    const prevImage = (e?: React.MouseEvent) => {
+        e?.stopPropagation();
         if (!selectedCategory) return;
         setCurrentImageIndex((prev) =>
             prev === 0 ? selectedCategory.images.length - 1 : prev - 1
         );
     };
+
+    // Performance: Preload next & prev images
+    useEffect(() => {
+        if (!selectedCategory) return;
+
+        const images = selectedCategory.images;
+        const nextIndex = currentImageIndex === images.length - 1 ? 0 : currentImageIndex + 1;
+        const prevIndex = currentImageIndex === 0 ? images.length - 1 : currentImageIndex - 1;
+
+        const preloadImage = (src: string) => {
+            const img = new window.Image();
+            img.src = src;
+        };
+
+        const nextSrc = `${selectedCategory.basePath}${images[nextIndex]}`;
+        const prevSrc = `${selectedCategory.basePath}${images[prevIndex]}`;
+
+        preloadImage(nextSrc);
+        preloadImage(prevSrc);
+
+    }, [selectedCategory, currentImageIndex]);
+
 
     return (
         <section id="inspiration" className="py-24 bg-white relative">
@@ -145,10 +167,6 @@ export default function Inspiration() {
                             onClick={() => openModal(category)}
                             className="group relative h-80 cursor-pointer overflow-hidden rounded-none shadow-md hover:shadow-xl transition-all duration-300"
                         >
-                            {/* LÓGICA DE IMAGEN:
-                                1. Busca si existe 'customCover'.
-                                2. Si no, intenta cargar la primera imagen de la galería.
-                             */}
                             <Image
                                 src={category.customCover || `${category.basePath}${category.images[0]}`}
                                 alt={category.title}
@@ -158,7 +176,7 @@ export default function Inspiration() {
 
                             {/* Content */}
                             <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center">
-                                <h3 className="text-3xl font-bold text-white uppercase tracking-wider">
+                                <h3 className="text-3xl font-bold text-white uppercase tracking-wider shadow-black/50 drop-shadow-lg">
                                     {category.title}
                                 </h3>
                                 <p className="mt-2 text-white/80 text-sm font-medium opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
@@ -172,56 +190,62 @@ export default function Inspiration() {
 
             {/* Modal Overlay */}
             {selectedCategory && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={closeModal}>
-                    {/* Modal Content */}
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-12"
+                    onClick={closeModal}
+                >
+                    {/* Modal Content Wrapper - Wraps tightly around content */}
                     <div
-                        className="relative w-full max-w-5xl bg-black rounded-none overflow-hidden shadow-2xl flex flex-col justify-center items-center"
+                        className="relative max-w-full max-h-full flex flex-col items-center justify-center"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
+                        {/* Close Button - Outside the image context for accessibility on small screens, or corner */}
                         <button
                             onClick={closeModal}
-                            className="absolute top-4 right-4 z-[60] p-2 bg-white/10 hover:bg-white/20 text-white rounded-full transition-colors backdrop-blur-md border border-white/10"
+                            className="absolute -top-12 right-0 md:top-0 md:-right-16 z-[60] p-3 text-white/70 hover:text-white transition-colors"
                             aria-label="Cerrar"
                         >
-                            <X size={24} />
+                            <X size={32} />
                         </button>
 
-                        {/* Carousel Image Container - Diseño mejorado para diferentes tamaños */}
-                        <div className="relative w-full min-h-[70vh] max-h-[85vh] bg-gradient-to-br from-gray-900 via-black to-gray-900 flex items-center justify-center">
+                        {/* Carousel Image Container - Auto size based on image */}
+                        <div className="relative shadow-2xl">
                             <Image
                                 src={`${selectedCategory.basePath}${selectedCategory.images[currentImageIndex]}`}
                                 alt={`${selectedCategory.title} Image ${currentImageIndex + 1}`}
                                 width={1920}
                                 height={1080}
-                                className="max-h-[85vh] w-auto h-auto object-contain"
+                                className="object-contain max-h-[85vh] w-auto h-auto rounded-sm bg-black"
                                 priority
+                                quality={90}
                             />
 
-                            {/* Navigation Arrows */}
+                            {/* Navigation Arrows - Overlay on image on mobile, side on desktop if space permits */}
                             <button
                                 onClick={prevImage}
-                                className="absolute left-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-all border border-white/10"
+                                className="absolute left-2 md:-left-16 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all"
                                 aria-label="Anterior"
                             >
-                                <ChevronLeft size={32} />
+                                <ChevronLeft size={40} />
                             </button>
                             <button
                                 onClick={nextImage}
-                                className="absolute right-4 top-1/2 -translate-y-1/2 p-3 bg-black/50 hover:bg-black/70 text-white rounded-full transition-all border border-white/10"
+                                className="absolute right-2 md:-right-16 top-1/2 -translate-y-1/2 p-2 md:p-3 text-white/70 hover:text-white hover:bg-white/10 rounded-full transition-all"
                                 aria-label="Siguiente"
                             >
-                                <ChevronRight size={32} />
+                                <ChevronRight size={40} />
                             </button>
 
-                            {/* Image Counter & Title */}
-                            <div className="absolute bottom-6 left-0 right-0 flex justify-center flex-col items-center gap-2 pointer-events-none">
-                                <h3 className="text-white text-xl font-bold drop-shadow-md">{selectedCategory.title}</h3>
-                                <span className="bg-black/50 text-white px-3 py-1 text-sm rounded-full backdrop-blur-sm border border-white/10">
+                            {/* Image Counter & Title Overlay */}
+                            <div className="absolute bottom-4 left-0 right-0 flex flex-col items-center gap-1 pointer-events-none">
+                                <span className="bg-black/60 text-white px-3 py-1 text-xs md:text-sm rounded-full backdrop-blur-sm border border-white/10">
                                     {currentImageIndex + 1} / {selectedCategory.images.length}
                                 </span>
                             </div>
                         </div>
+
+                        <h3 className="mt-4 text-white text-xl font-bold tracking-wider uppercase text-center md:hidden">{selectedCategory.title}</h3>
+
                     </div>
                 </div>
             )}
