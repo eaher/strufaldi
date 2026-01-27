@@ -12,7 +12,7 @@ const PRODUCTS = [
         basePath: '/images/products/6x24/',
         // Image for the card
         coverImage: '/images/products/formato-6x24.png',
-        images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+        images: ['6x24-01.png', '6x24-02.png', '6x24-03.png'],
         description: 'Descripción corta del formato 6x24...'
     },
     {
@@ -20,7 +20,7 @@ const PRODUCTS = [
         title: 'Formato 10x10',
         basePath: '/images/products/10x10/',
         coverImage: '/images/products/formato-10x10.jpg',
-        images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+        images: ['10x10-01.png', '10x10-02.png', '10x10-03.png', '10x10-04.png', '10x10-05.png', '10x10-06.png', '10x10-07.png', '10x10-08.png', '10x10-09.png'],
         description: 'Descripción corta del formato 10x10...'
     },
     {
@@ -28,7 +28,7 @@ const PRODUCTS = [
         title: 'Formato 10x20',
         basePath: '/images/products/10x20/',
         coverImage: '/images/products/formato-10x20.png',
-        images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+        images: ['10x20-01.png', '10x20-02.png'],
         description: 'Descripción corta del formato 10x20...'
     },
     {
@@ -36,7 +36,7 @@ const PRODUCTS = [
         title: 'Formato 15x15',
         basePath: '/images/products/15x15/',
         coverImage: '/images/products/formato-15x15.png',
-        images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+        images: ['15x15-01.png', '15x15-02.png', '15x15-03.png'],
         description: 'Descripción corta del formato 15x15...'
     },
     {
@@ -44,7 +44,7 @@ const PRODUCTS = [
         title: 'Formato 20x20',
         basePath: '/images/products/20x20/',
         coverImage: '/images/products/formato-20x20.png',
-        images: ['1.jpg', '2.jpg', '3.jpg', '4.jpg'],
+        images: ['20x20-01.png', '20x20-02.png', '20x20-03.png'],
         description: 'Descripción corta del formato 20x20...'
     }
 ];
@@ -116,13 +116,11 @@ export default function Products() {
                     ))}
                 </div>
 
-                <div className="mt-16 text-center">
-                    <div className="w-24 h-1 bg-strufaldi-red mx-auto rounded-none mb-8"></div>
+                <div className="mt-8 text-center max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4"
                     >
                         <p>
                             Strufaldi es la marca brasileña de revestimientos cerámicos de pequeño formato que combina la artesanía tradicional con tecnología de punta para crear productos de diseño que superan los estándares más exigentes del mercado.

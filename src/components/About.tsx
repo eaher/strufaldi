@@ -17,7 +17,7 @@ export default function About() {
                         >
                             <h4 className="text-strufaldi-red font-bold uppercase tracking-widest mb-4">Sobre Nosotros</h4>
 
-                            <div className="relative h-20 w-80 mb-6">
+                            <div className="relative h-24 w-80 mb-2">
                                 <Image
                                     src="/images/logo-der-v2.png"
                                     alt="Strufaldi Logo"
@@ -29,7 +29,7 @@ export default function About() {
                                 Strufaldi es una empresa brasileña fundada en 1995, especializada en revestimientos cerámicos de pequeño formato, como pastillas y azulejos, conocidos por su diseño innovador, colores vibrantes y alta calidad, ideales para piscinas, fachadas e interiores, con una fuerte presencia en el mercado latinoamericano.
                             </p>
 
-                            <div className="relative h-12 w-48 mb-6">
+                            <div className="relative h-16 w-48 mb-6">
                                 <Image
                                     src="/images/logo-izq.png"
                                     alt="Ceracor Logo"

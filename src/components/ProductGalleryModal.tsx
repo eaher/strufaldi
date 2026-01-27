@@ -52,11 +52,17 @@ interface ProductGalleryModalProps {
 }
 
 export default function ProductGalleryModal({ isOpen, onClose, title, images }: ProductGalleryModalProps) {
-    // Ensure we have enough slides for the loop to work correctly without gaps
-    // Swiper loop mode needs typically 2x slides per view to be safe
-    const displayImages = images.length > 0 && images.length < 6
-        ? [...images, ...images, ...images] // Triple it if small (e.g. 4 -> 12)
-        : images;
+    // Ensure we have enough slides for the loop to work correctly
+    // Swiper loop mode needs enough slides to fill the buffer (typically slidesPerView * 2)
+    const targetMinSlides = 6;
+    let displayImages = [...images];
+
+    // Only duplicate if we have images and fewer than the target
+    if (images.length > 0) {
+        while (displayImages.length < targetMinSlides) {
+            displayImages = [...displayImages, ...images];
+        }
+    }
 
     return (
         <AnimatePresence>
