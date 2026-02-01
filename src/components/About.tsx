@@ -53,7 +53,7 @@ export default function About() {
                         >
                             <div className="aspect-[4/3] rounded-lg shadow-2xl relative overflow-hidden group">
                                 <Image
-                                    src="/images/corpo.png"
+                                    src="/images/inspiracion/piscina/STRUFALDI - 10X10 - MALAWI - AMB AGOSTO24 - 2.webp"
                                     alt="Instalaciones Strufaldi"
                                     fill
                                     className="object-cover transition-transform duration-700 group-hover:scale-105"

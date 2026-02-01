@@ -116,11 +116,12 @@ export default function Products() {
                     ))}
                 </div>
 
-                <div className="mt-8 text-center max-w-4xl mx-auto text-gray-600 leading-relaxed space-y-4">
+                <div className="mt-8 text-center mx-auto text-gray-600 leading-relaxed space-y-4 text-lg">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
+                        className="space-y-3"
                     >
                         <p>
                             Strufaldi es la marca brasileña de revestimientos cerámicos de pequeño formato que combina la artesanía tradicional con tecnología de punta para crear productos de diseño que superan los estándares más exigentes del mercado.

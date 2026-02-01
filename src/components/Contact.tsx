@@ -44,40 +44,53 @@ export default function Contact() {
                         </button>
                     </div>
 
-                    <form className="space-y-4">
+                    <form className="space-y-4" action="contact.php" method="POST">
+                        {/* Hidden input for Form Type */}
+                        <input type="hidden" name="user_type" value={formType} />
+
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input
                                 type="text"
+                                name="nombre"
                                 placeholder="Nombre"
+                                required
                                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                             />
                             <input
                                 type="text"
+                                name="apellido"
                                 placeholder="Apellido"
+                                required
                                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                             />
                         </div>
 
                         <input
                             type="email"
+                            name="email"
                             placeholder="Email"
+                            required
                             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                         />
 
                         <input
                             type="tel"
+                            name="telefono"
                             placeholder="Teléfono"
+                            required
                             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                         />
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <input
                                 type="text"
+                                name="ciudad"
                                 placeholder="Ciudad"
                                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                             />
                             <input
                                 type="text"
+                                name="provincia"
                                 placeholder="Provincia"
                                 className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all"
                             />
@@ -85,7 +98,9 @@ export default function Contact() {
 
                         <textarea
                             rows={4}
+                            name="mensaje"
                             placeholder="Mensaje"
+                            required
                             className="w-full px-4 py-3 bg-white border border-gray-300 rounded-none focus:border-strufaldi-red focus:ring-1 focus:ring-strufaldi-red focus:outline-none placeholder:text-gray-400 text-base transition-all resize-none"
                         ></textarea>
 
@@ -102,7 +117,7 @@ export default function Contact() {
                                         <div className="relative flex items-center justify-center">
                                             <input
                                                 type="radio"
-                                                name="contactMethod"
+                                                name="contacto_preferido"
                                                 value={option.id}
                                                 checked={contactMethod === option.id}
                                                 onChange={() => setContactMethod(option.id as any)}

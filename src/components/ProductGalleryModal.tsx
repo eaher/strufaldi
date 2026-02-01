@@ -91,7 +91,7 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                             {/* Header */}
                             <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50/50">
                                 <div>
-                                    <h3 className="text-2xl font-bold text-gray-800">Galería {title}</h3>
+                                    <h3 className="text-2xl font-bold text-gray-800">Galería {title.replace('Formato', 'Productos')}</h3>
                                     <p className="text-sm text-gray-500 mt-1">Explora nuestra colección y acabados</p>
                                 </div>
                                 <button
@@ -110,7 +110,7 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                                 <Swiper
                                     effect={'slide'}
                                     grabCursor={true}
-                                    centeredSlides={true}
+                                    centeredSlides={false}
                                     slidesPerView={1.5} // Mobile: show partial next/prev
                                     loop={true} // Infinite loop for better UX with few items
                                     breakpoints={{

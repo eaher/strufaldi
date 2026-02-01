@@ -13,7 +13,7 @@ export default function Hero() {
 
 
             {/* Hero Container */}
-            <div className="relative w-full bg-gray-100 min-h-[600px] lg:min-h-[650px] lg:h-[calc(100vh-80px)] flex flex-col lg:block">
+            <div className="relative w-full bg-gray-100 min-h-[600px] lg:min-h-[650px] lg:h-[1000px] flex flex-col lg:block">
 
                 {/* Background Image */}
                 <div className="relative w-full h-[400px] md:h-[500px] lg:absolute lg:inset-0 lg:h-full z-0">
