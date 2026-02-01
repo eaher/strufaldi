@@ -152,7 +152,7 @@ export default function Inspiration() {
 
 
     return (
-        <section id="inspiration" className="pt-2 pb-8 bg-white relative">
+        <section id="inspiration" className="pt-2 pb-8 bg-white relative scroll-mt-24">
             <div className="container mx-auto px-6 max-w-7xl">
                 <div className="mb-12">
                     <h4 className="text-red-700 font-bold uppercase tracking-widest mb-2 text-sm">Inspiración</h4>

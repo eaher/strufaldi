@@ -67,7 +67,7 @@ export default function Products() {
         : [];
 
     return (
-        <section id="products" className="py-16 bg-white">
+        <section id="products" className="py-16 bg-white scroll-mt-24">
             <div className="container mx-auto px-4 max-w-7xl">
                 <div className="text-center mb-12">
 
