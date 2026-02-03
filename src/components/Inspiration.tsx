@@ -33,6 +33,13 @@ const INSPIRATION_CATEGORIES = [
         basePath: '/images/inspiracion/pared/',
         customCover: '/images/inspiracion/card-pared.webp',
         images: [
+            // Imágenes de NUEVA PARED (agregadas el 2026-02-03)
+            'MURO-NEGRO-web-36.webp',
+            'MURO-NEGRO-web-5.webp',
+            'MURO-NEGRO-web-8.webp',
+            'HACER ZOOM.webp',
+            'RE ENCUADRAR.webp',
+            // Imágenes anteriores
             '31,- STRUFALDI - 6X24 - PALAU BRIGHT - AMB - AGOSTO24.webp',
             'STRUFALADI 10X10 KAIMU - SAVANE 19X120 - LEGNO URBAN - ABRIL24 - AMBIENTACION x.webp',
             'STRUFALDI  6X24 - ARDEA - MAYO24 -  AMB2.webp',
