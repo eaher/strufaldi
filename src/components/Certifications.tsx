@@ -13,7 +13,7 @@ export default function Certifications() {
     ];
 
     return (
-        <section id="technical" className="py-8 sm:py-10 md:py-12 bg-neutral-700 text-white">
+        <section id="technical" className="py-8 sm:py-10 md:py-12 bg-strufaldi-gray">
             <div className="container mx-auto px-4 sm:px-6 max-w-7xl">
 
                 {/* Icons Row - Responsive grid that becomes horizontal on larger screens */}
@@ -45,7 +45,7 @@ export default function Certifications() {
                 </motion.div>
 
                 {/* Divider */}
-                <div className="w-full h-px bg-white/10 mb-6 sm:mb-8" />
+                <div className="w-full h-px bg-gray-200 mb-6 sm:mb-8" />
 
                 {/* Catalog Section - Centered */}
                 <motion.div
@@ -55,8 +55,8 @@ export default function Certifications() {
                     transition={{ delay: 0.3 }}
                     className="flex flex-col items-center justify-center text-center max-w-2xl mx-auto px-2"
                 >
-                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3">Catálogo Técnico</h3>
-                    <p className="text-white/70 mb-5 sm:mb-6 text-base sm:text-lg leading-relaxed max-w-xl">
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-strufaldi-charcoal">Catálogo de productos</h3>
+                    <p className="text-gray-600 mb-5 sm:mb-6 text-base sm:text-lg leading-relaxed max-w-xl">
                         Descarga nuestro catálogo completo para ver todas las especificaciones técnicas y modelos disponibles.
                     </p>
                     <button

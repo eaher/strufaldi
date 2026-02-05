@@ -14,8 +14,8 @@ export default function Footer() {
                     <div className="space-y-6 flex flex-col items-center md:items-start w-full">
                         <div className="relative h-16 w-48">
                             <Image
-                                src="/images/logo-izq.png"
-                                alt="Ceracor Logo"
+                                src="/images/LOGO H - BLANCO.png"
+                                alt="Strufaldi Logo"
                                 fill
                                 className="object-contain object-center md:object-left"
                             />
