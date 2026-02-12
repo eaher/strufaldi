@@ -1,5 +1,4 @@
-'use client';
-
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -64,6 +63,27 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
         }
     }
 
+    // Zoom correction for high-DPI screens (counteracts global DynamicScaling)
+    const [modalZoom, setModalZoom] = useState(1);
+
+    useEffect(() => {
+        // Detect current zoom/scale
+        const dpr = window.devicePixelRatio || 1;
+        if (dpr > 1.2) { // Apply only if significant scaling is detected
+            setModalZoom(dpr);
+        } else {
+            setModalZoom(1);
+        }
+
+        const handleResize = () => {
+            const currentDpr = window.devicePixelRatio || 1;
+            setModalZoom(currentDpr > 1.2 ? currentDpr : 1);
+        };
+
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
     return (
         <AnimatePresence>
             {isOpen && (
@@ -84,12 +104,16 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ type: 'spring', duration: 0.5 }}
                         className="fixed inset-0 z-50 flex items-center justify-center p-4 pointer-events-none"
+                        style={{
+                            zoom: modalZoom as any, // Force typed zoom
+                            height: modalZoom > 1 ? '100vh' : '100%', // Ensure full height coverage when zoomed
+                        }}
                     >
                         {/* Modal Content */}
                         <div className="bg-white w-full max-w-5xl rounded-2xl shadow-2xl overflow-hidden relative pointer-events-auto flex flex-col max-h-[90vh]">
 
                             {/* Header */}
-                            <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50/50">
+                            <div className="flex items-center justify-between p-6 border-b border-gray-100 bg-gray-50/50 shrink-0">
                                 <div>
                                     <h3 className="text-2xl font-bold text-gray-800">Galería {title.replace('Formato', 'Productos')}</h3>
                                     <p className="text-sm text-gray-500 mt-1">Explora nuestra colección y acabados</p>
@@ -106,7 +130,7 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                             <style>{swiperStyles}</style>
 
                             {/* Carousel Container */}
-                            <div className="flex-1 p-8 md:p-12 overflow-hidden bg-gray-50 flex items-center justify-center min-h-[400px]">
+                            <div className="p-8 md:p-12 overflow-hidden bg-gray-50 flex items-center justify-center">
                                 <Swiper
                                     effect={'slide'}
                                     grabCursor={true}
@@ -123,13 +147,16 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                                     pagination={{ clickable: true }}
                                     navigation={true}
                                     modules={[Pagination, Navigation]}
-                                    className="w-full h-[400px] md:h-[500px] py-8 product-gallery-swiper"
+                                    // Responsive height:
+                                    // - Scaled/Mobile: 50vh (relative to viewport) with a safety minimum
+                                    // - Standard Desktop: Fixed 500px for consistency
+                                    className="w-full h-[50vh] min-h-[350px] md:h-[500px] product-gallery-swiper py-8"
                                     initialSlide={0} // Start at 0 since loop handles centering
                                 >
                                     {displayImages.map((img, index) => (
                                         <SwiperSlide
                                             key={index}
-                                            className="w-[300px] h-[300px] md:w-[400px] md:h-[400px] relative rounded-xl overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-[1.02]"
+                                            className="h-full relative rounded-xl overflow-hidden shadow-md bg-white transition-transform duration-300 hover:scale-[1.02]"
                                         >
                                             <Image
                                                 src={img}
@@ -143,7 +170,7 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
                             </div>
 
                             {/* Footer */}
-                            <div className="p-4 border-t border-gray-100 bg-white text-center text-sm text-gray-400">
+                            <div className="p-4 border-t border-gray-100 bg-white text-center text-sm text-gray-400 shrink-0">
                                 {images.length} imágenes disponibles
                             </div>
                         </div>
