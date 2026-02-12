@@ -69,7 +69,12 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
     useEffect(() => {
         // Detect current zoom/scale
         const dpr = window.devicePixelRatio || 1;
-        if (dpr > 1.2) { // Apply only if significant scaling is detected
+
+        // Safety check for mobile context (similar to DynamicScaling)
+        // Mobile devices have high DPR but don't use the body-zoom hack, so we shouldn't inverse-zoom them.
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+        if (!isMobile && dpr > 1.2) { // Apply only if significant scaling is detected AND it's not a mobile
             setModalZoom(dpr);
         } else {
             setModalZoom(1);
@@ -77,7 +82,13 @@ export default function ProductGalleryModal({ isOpen, onClose, title, images }: 
 
         const handleResize = () => {
             const currentDpr = window.devicePixelRatio || 1;
-            setModalZoom(currentDpr > 1.2 ? currentDpr : 1);
+            const currentIsMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+            if (!currentIsMobile && currentDpr > 1.2) {
+                setModalZoom(currentDpr);
+            } else {
+                setModalZoom(1);
+            }
         };
 
         window.addEventListener('resize', handleResize);
